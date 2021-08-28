@@ -45,18 +45,21 @@ def getCntryName(cd):
 
 app = tk.Tk()
 
-app.geometry("600x500")
+app.geometry("550x450")
 app.title("Weather application")
 app.configure(bg="skyblue")
 
-f = ("poppins", 15, "bold")
-t = ("poppins", 30, "bold")
-x = ("poppins", 10, "italic")
+f = ("poppins", 10, "bold")
+t = ("poppins", 20, "bold")
+x = ("poppins", 7, "italic")
 
 textField = tk.Entry(app, font=t, takefocus="center", justify="center", bg="lightgreen")
 textField.pack(pady=20)
 textField.focus()
 textField.bind('<Return>', getWEATHER)
+
+labelIcon = tk.Label(bg="skyblue")
+labelIcon.pack()
 
 label1 = tk.Label(app, font=t, bg="skyblue")
 label2 = tk.Label(app, font=f, bg="skyblue")
