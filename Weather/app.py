@@ -14,6 +14,7 @@ def getWEATHER(app):
 
         cityName = jsonData['name']
         countrycd = jsonData['sys']['country']
+
         description = str(jsonData['weather'][0]['description']).capitalize()
         temp = int(jsonData['main']['temp'])
         minTemp = int(jsonData['main']['temp_min'])
@@ -25,7 +26,7 @@ def getWEATHER(app):
         sunrise = time.strftime("%I:%M:%S", time.gmtime(jsonData['sys']['sunrise'])) # (-)21600 to fix GMT timezone
         sunset = time.strftime("%I:%M:%S", time.gmtime(jsonData['sys']['sunset']))
 
-        finalInfo = cityName + ", " + countrycd + "\n" + str(temp) + "°C" + "\n" + description
+        finalInfo = cityName + ", " + getCntryName(countrycd) + "\n" + str(temp) + "°C" + "\n" + description
         finalData = "\n" + "Max Temp : " + str(maxTemp) + "°C" + "\n" + "Min Temp : " + str(minTemp) + "°C" + "\n" + "Pressure : " + str(pressure) + "bar" + "\n" + "Humidity : " + str(humidity) + "%" + "\n" + "Wind : " + str(wind) + "m/s" + " (" + str(deg) + "°)" + "\n" + "Sunrise : " + str(sunrise) + "GMT" + "\n" + "Sunset : " + str(sunset) + "GMT"
 
         label1.config(text=finalInfo)
@@ -35,6 +36,12 @@ def getWEATHER(app):
         label1.config(text="Zoinks! :'(")
         label2.config(text="Please enter the correct city")
 
+def getCntryName(cd):
+    cntryAPI = "https://restcountries.eu/rest/v2/alpha/"+cd
+    jsonCntryName = requests.get(cntryAPI).json()
+    cntryName = jsonCntryName['nativeName'] 
+
+    return str(cntryName)
 
 app = tk.Tk()
 
@@ -46,7 +53,7 @@ f = ("poppins", 15, "bold")
 t = ("poppins", 30, "bold")
 x = ("poppins", 10, "italic")
 
-textField = tk.Entry(app, font=t, takefocus="center", justify="center", bg="skyblue")
+textField = tk.Entry(app, font=t, takefocus="center", justify="center", bg="lightgreen")
 textField.pack(pady=20)
 textField.focus()
 textField.bind('<Return>', getWEATHER)
