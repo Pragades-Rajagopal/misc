@@ -31,10 +31,13 @@ def getWEATHER(app):
 
         label1.config(text=finalInfo)
         label2.config(text=finalData)
+        textField.delete(0,"end")
 
     except Exception as e:
+
         label1.config(text="Zoinks! :'(")
         label2.config(text="Please enter the correct city")
+        textField.delete(0,"end")
 
 def getCntryName(cd):
     cntryAPI = "https://restcountries.eu/rest/v2/alpha/"+cd
