@@ -58,6 +58,7 @@ def getDetail(app):
 
         elif (val_len == 0):
 
+            label1.config(text="")
             label2.config(text="Please enter the correct code or capital")
             textField.delete(0,"end")
 
