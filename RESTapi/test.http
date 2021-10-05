@@ -1,0 +1,13 @@
+###
+GET http://127.0.0.1:8000/video/1
+
+###
+PUT http://127.0.0.1:8000/video/2 HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Aleix", "views":500, "likes":14638
+}
+
+###
+DELETE http://127.0.0.1:8000/video/2
