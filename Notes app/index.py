@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, url_for, flash, redirect
+from flask import Flask, render_template, request, url_for, flash, redirect, send_file
 import sqlite3
 from werkzeug.exceptions import abort
+import time
+from extractor import fileOps
 
 def database_connection():
     conn = sqlite3.connect('database.db')
@@ -97,6 +99,19 @@ def post(id):
     post = get_post(id)
     # print(post)
     return render_template('post.html', post=post)
+
+
+@app.route('/getCSVfile')
+def getCSV():
+    
+    cur_date = str(time.strftime("%Y%m%d_%H%M", time.localtime()))
+    fileOps(cur_date)
+    
+    return send_file('./exports/data'+cur_date+'.csv',
+    mimetype='text/csv',
+    attachment_filename='data'+cur_date+'.csv',
+    as_attachment=True)
+
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
