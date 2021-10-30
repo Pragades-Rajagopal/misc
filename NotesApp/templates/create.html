@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+
+{% block content %}
+    <h2>{% block title %} Create a New Post {% endblock %}</h2>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" placeholder="Title of the Post" class="form-control" value="{{ request.form['title'] }}">
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea name="content" placeholder="Content of the Post" class="form-control">{{ request.form['content'] }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="content">Priority</label>
+            <select class="form-select mt-3" name="priority">
+                  <option value="P4">Low</option>
+                  <option value="P3">Medium</option>
+                  <option value="P2">High</option>
+                  <option value="P1">Critical</option>
+         </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">SUBMIT</button> 
+        </div>
+    </form>
+
+{% endblock %}

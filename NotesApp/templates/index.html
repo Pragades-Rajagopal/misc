@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} Content & Notebook application {% endblock %}</h2>
+    {% for post in posts %}
+        <a href="{{ url_for('post', id=post['id']) }}">
+            <h2>{{ post['title'] }}</h2>
+        </a>
+        <span class="btn btn-danger btn-sm">{{ post['priority'] }}</span>
+        <a href="{{ url_for('edit', id1=post['id']) }}">
+            <span class="btn btn-primary btn-sm">EDIT</span>
+        </a>
+        <span class="badge bg-light">{{ post['created'] }}</span>
+        
+        <hr>
+    {% endfor %}
+{% endblock %}
+
+<!-- {{ url_for('post', id=post['id']) }} -->
