@@ -1,1 +1,0 @@
-Generate Secret key using *os.urandom(16).hex()* and store it in SECRET_KEY variable in a python file and import in index.py

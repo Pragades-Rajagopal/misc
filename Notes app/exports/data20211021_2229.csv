@@ -1,8 +1,0 @@
-id,created,title,content
-3,2021-10-20 20:55:47,First Release,This is the first public release of note taking application
-4,2021-10-20 20:56:35,Bug squashes,Check for any bugs and fix them! Timestamp is now changed to localtime
-5,2021-10-20 20:57:15,Enhancements!,"Bring new ideas and enhancements to the existing application.
-1) Export to CSV feature added"
-6,2021-10-20 20:58:09,Celebration time mates!,Hurray!!! It's time to celebrate for the launch of our first application! 
-8,2021-10-21 22:27:03,Added new feature!,Extraction from data in csv format is available new. New enhancement done
-9,2021-10-21 22:28:53,Code deployment into production,Plan to stage and deploy the code into production after testing
