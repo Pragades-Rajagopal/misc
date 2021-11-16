@@ -20,7 +20,7 @@ def get_post(id):
 app = Flask(__name__)
 app.config.from_pyfile('sessionKey.py')
 
-@app.route('/')
+@app.route('/issue-tracker')
 def index():
     try:
         conn = database_connection()
@@ -33,7 +33,7 @@ def index():
         print("Error occured at mainpage")
 
 
-@app.route('/create', methods=('GET', 'POST'))
+@app.route('/issue-tracker/create', methods=('GET', 'POST'))
 def create():
 
     if request.method == 'POST':
@@ -59,7 +59,7 @@ def create():
     )
 
 
-@app.route('/<int:id1>/edit', methods=('GET', 'POST'))
+@app.route('/issue-tracker/<int:id1>/edit', methods=('GET', 'POST'))
 def edit(id1):
     post = get_post(id1)
 
@@ -86,7 +86,7 @@ def edit(id1):
     
     return render_template('edit.html', post=post)
 
-@app.route('/<int:id>/delete', methods=('POST',))
+@app.route('/issue-tracker/<int:id>/delete', methods=('POST',))
 def delete(id):
 
     conn = database_connection()
@@ -97,7 +97,7 @@ def delete(id):
     return redirect(url_for('index'))
 
 
-@app.route('/<int:id>')
+@app.route('/issue-tracker/<int:id>')
 def post(id):
     post = get_post(id)
 
@@ -105,7 +105,7 @@ def post(id):
         abort(Response('''
         <h1>Something you are looking at is not available!</h1>
         <br>
-        <a href="/">GO HOME</a>
+        <a href="/issue-tracker">GO HOME</a>
         '''))
 
     # print(post)

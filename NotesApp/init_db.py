@@ -8,7 +8,7 @@ with open('schema.sql') as foo:
 cur = conn.cursor()
 
 cur.execute("INSERT INTO posts (title, content, created, priority) values(?,?,?,?)",
-('First Release', 'This is the first public release of note taking application', '2021/10/30 11:00:00', 'P2'))
+('First Note', 'First note', '2021/11/16 00:00:00', 'P2'))
 
 
 conn.commit()
